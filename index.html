@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>寻花令金手指 - 诗词查询工具</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>寻花令金手指</h1>
+            <p class="subtitle">Xunhualing Poetry Cheat - 快速查找匹配诗句</p>
+        </header>
+
+        <!-- 诗句类型选择 -->
+        <div class="control-panel">
+            <div class="type-selector">
+                <span class="label">诗句类型：</span>
+                <label class="radio-label">
+                    <input type="radio" name="poemType" value="all" checked>
+                    <span>全部</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="poemType" value="five">
+                    <span>五言</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="poemType" value="seven">
+                    <span>七言</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- 搜索表单 -->
+        <div class="search-form">
+            <!-- 确定位置输入 -->
+            <div class="input-group">
+                <div class="input-header">
+                    <label class="input-label">确定位置</label>
+                    <span class="input-hint">点击方块输入文字，空格键清除</span>
+                </div>
+                <div id="patternInput" class="pattern-boxes" data-pattern="">
+                    <!-- 方块将由JS动态生成 -->
+                </div>
+                <!-- 隐藏输入框用于接收中文输入 -->
+                <input type="text" id="hiddenImeInput" class="hidden-ime-input" autocomplete="off">
+                <input type="hidden" id="patternInputHidden" class="text-input" autocomplete="off">
+                <div class="input-examples">
+                    <span class="example-tag" data-action="clear">清空</span>
+                    <span class="example-tag" data-action="fillRandom">随机填入</span>
+                    <span class="example-tag" data-action="example1">春□□□□□□□□</span>
+                    <span class="example-tag" data-action="example2">□□□明月</span>
+                </div>
+            </div>
+
+            <!-- 必含文字输入 -->
+            <div class="input-group">
+                <div class="input-header">
+                    <label class="input-label">必含文字</label>
+                    <span class="input-hint">空格分隔多个字符</span>
+                </div>
+                <input type="text" id="mustContainInput" class="text-input"
+                       placeholder="输入必须包含的字符，如: 山 水"
+                       autocomplete="off">
+            </div>
+
+            <!-- 排除文字输入 -->
+            <div class="input-group">
+                <div class="input-header">
+                    <label class="input-label">排除文字</label>
+                    <span class="input-hint">空格分隔多个字符</span>
+                </div>
+                <input type="text" id="mustNotContainInput" class="text-input"
+                       placeholder="输入必须排除的字符，如: 花"
+                       autocomplete="off">
+            </div>
+
+            <!-- 操作按钮 -->
+            <div class="button-group">
+                <button id="searchBtn" class="btn btn-primary">
+                    <span class="btn-icon">🔍</span>
+                    <span class="btn-text">搜索</span>
+                </button>
+                <button id="clearBtn" class="btn btn-secondary">
+                    <span class="btn-icon">🗑️</span>
+                    <span class="btn-text">清空</span>
+                </button>
+                <button id="randomBtn" class="btn btn-secondary">
+                    <span class="btn-icon">🎲</span>
+                    <span class="btn-text">随机</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 搜索结果 -->
+        <div class="results-section">
+            <div class="results-header">
+                <span id="resultsCount" class="results-count">准备搜索</span>
+                <span id="searchTime" class="search-time"></span>
+            </div>
+            <div id="resultsContainer" class="results-container">
+                <div class="empty-state">
+                    <div class="empty-icon">📜</div>
+                    <p>输入搜索条件开始查找诗句</p>
+                    <p class="empty-hint">可以使用确定位置模式、必含文字或两者组合</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部信息 -->
+        <footer>
+            <p>数据库包含 <span id="dbStats">加载中...</span> 条诗句</p>
+        </footer>
+    </div>
+
+    <!-- 复制提示 -->
+    <div id="toast" class="toast">已复制到剪贴板</div>
+
+    <!-- 加载进度覆盖层 -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-content">
+            <h2 class="loading-title">寻花令金手指</h2>
+            <div class="progress-bar-container">
+                <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+            </div>
+            <p id="loadingStatus" class="loading-status">正在加载诗句数据库...</p>
+        </div>
+    </div>
+
+    <!-- 数据文件 -->
+    <script src="js/poem-dict.js"></script>
+    <script src="js/poem-five.js"></script>
+    <script src="js/poem-seven.js"></script>
+    <!-- 搜索引擎和应用 -->
+    <script src="js/search-engine.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
