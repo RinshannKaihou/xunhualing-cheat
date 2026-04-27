@@ -1,0 +1,700 @@
+/* Variation B — Letterpress Folio 折本 ===============================
+   Aesthetic: large display serif, manuscript page with margins, prominent
+   vermillion seal, ornamental flower marks, generous whitespace.
+   ==================================================================== */
+
+:root {
+  --lf-paper:   #f5ecd9;
+  --lf-paper-2: #ede2c5;
+  --lf-paper-3: #e6d8b6;
+  --lf-ink:     #1a1814;
+  --lf-ink-2:   #4a463d;
+  --lf-ink-3:   #6e6859;
+  --lf-rule:    #c8b896;
+  --lf-vermillion: #8b1a1a;
+  --lf-vermillion-soft: rgba(139, 26, 26, 0.13);
+  --lf-ochre:   #9c7a3a;
+  --lf-sage:    #5a6b5a;
+
+  --lf-serif:   "Source Han Serif SC", "Noto Serif SC", "STSong", "Songti SC", serif;
+  --lf-display: "EB Garamond", "Cormorant Garamond", "Hoefler Text", Georgia, serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.lf-root {
+  background: var(--lf-paper);
+  color: var(--lf-ink);
+  font-family: var(--lf-serif);
+  min-height: 100%;
+  padding: 56px 96px 72px 120px;
+  position: relative;
+  overflow: hidden;
+  line-height: 1.5;
+  background-image:
+    radial-gradient(rgba(60, 50, 30, 0.022) 1px, transparent 1px),
+    radial-gradient(rgba(60, 50, 30, 0.018) 1px, transparent 1px);
+  background-size: 19px 19px, 33px 33px;
+  background-position: 0 0, 11px 7px;
+}
+
+/* Side rule (manuscript margin) */
+.lf-page-rule {
+  position: absolute;
+  left: 56px;
+  top: 56px;
+  bottom: 56px;
+  width: 1px;
+  background: var(--lf-vermillion);
+  opacity: 0.45;
+}
+.lf-folio-no {
+  position: absolute;
+  left: 32px;
+  top: 60px;
+  font-family: var(--lf-serif);
+  font-size: 24px;
+  color: var(--lf-vermillion);
+  writing-mode: vertical-rl;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+
+.lf-inner { position: relative; z-index: 1; }
+
+/* ===== Hero ====================================================== */
+.lf-hero { margin-bottom: 56px; }
+.lf-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 40px;
+  padding-bottom: 24px;
+}
+
+.lf-kicker {
+  font-family: var(--lf-display);
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--lf-ink-3);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.lf-kicker-orn { color: var(--lf-vermillion); font-size: 10px; }
+
+.lf-display {
+  font-family: var(--lf-serif);
+  font-weight: 700;
+  font-size: 168px;
+  line-height: 0.92;
+  letter-spacing: 0.1em;
+  color: var(--lf-ink);
+  display: flex;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+.lf-display-1 { color: var(--lf-ink); }
+.lf-display-2 { color: var(--lf-vermillion); }
+.lf-display-3 { color: var(--lf-ink); }
+
+.lf-tagline {
+  font-family: var(--lf-display);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--lf-ink-2);
+  font-style: normal;
+  max-width: 460px;
+}
+.lf-tagline em {
+  color: var(--lf-vermillion);
+  font-weight: 500;
+}
+
+.lf-hero-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+.lf-seal {
+  width: 124px;
+  height: 124px;
+  opacity: 0.92;
+  filter: drop-shadow(0 0.5px 0 rgba(139, 26, 26, 0.2));
+}
+.lf-hero-meta {
+  text-align: center;
+  font-family: var(--lf-serif);
+  font-size: 16px;
+  color: var(--lf-ink-2);
+  letter-spacing: 0.18em;
+}
+.lf-hero-meta-en {
+  font-family: var(--lf-display);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--lf-ink-3);
+  margin-top: 4px;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.lf-rule-fancy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.lf-rule-line {
+  flex: 1;
+  height: 1px;
+  background: var(--lf-ink);
+}
+.lf-rule-orn {
+  color: var(--lf-vermillion);
+  font-size: 14px;
+}
+
+/* ===== Ribbon stats ================================================ */
+.lf-ribbon {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--lf-rule);
+  border-top: 1px solid var(--lf-rule);
+  border-bottom: 1px solid var(--lf-rule);
+  margin-bottom: 64px;
+}
+.lf-ribbon-stat {
+  background: var(--lf-paper);
+  padding: 22px 24px;
+  text-align: left;
+}
+.lf-ribbon-value {
+  font-family: var(--lf-display);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--lf-ink);
+  letter-spacing: 0.01em;
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.lf-ribbon-label {
+  font-family: var(--lf-display);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--lf-ink-3);
+  text-transform: lowercase;
+}
+
+/* ===== Section heads =============================================== */
+.lf-compose-head {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  margin-bottom: 32px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--lf-ink);
+}
+.lf-results-meta {
+  margin-left: auto;
+  text-align: right;
+  font-family: var(--lf-display);
+  font-size: 13px;
+  color: var(--lf-ink-2);
+}
+.lf-compose-eyebrow {
+  font-family: var(--lf-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--lf-vermillion);
+}
+.lf-h2 {
+  font-family: var(--lf-display);
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--lf-ink);
+  white-space: nowrap;
+}
+.lf-compose-zh {
+  font-family: var(--lf-serif);
+  font-size: 16px;
+  letter-spacing: 0.18em;
+  color: var(--lf-ink-3);
+}
+.lf-results-meta b {
+  color: var(--lf-ink);
+  font-weight: 600;
+  font-variant-numeric: oldstyle-nums;
+}
+.lf-muted { color: var(--lf-ink-3); font-style: italic; }
+
+/* ===== Compose: tabs =============================================== */
+.lf-compose { margin-bottom: 56px; }
+.lf-tabs {
+  display: flex;
+  gap: 36px;
+  margin-bottom: 32px;
+}
+.lf-tab {
+  background: transparent;
+  border: none;
+  font-family: var(--lf-serif);
+  font-size: 17px;
+  color: var(--lf-ink-3);
+  cursor: pointer;
+  padding: 4px 0 6px;
+  border-bottom: 2px solid transparent;
+  letter-spacing: 0.1em;
+  transition: color 0.15s, border-color 0.15s;
+}
+.lf-tab:hover { color: var(--lf-ink); }
+.lf-tab.is-on {
+  color: var(--lf-vermillion);
+  border-bottom-color: var(--lf-vermillion);
+}
+
+/* ===== Manuscript grid ============================================= */
+.lf-manuscript {
+  background:
+    repeating-linear-gradient(
+      to right,
+      transparent 0 11.11%,
+      rgba(139, 26, 26, 0.04) 11.11% 11.11%
+    ),
+    var(--lf-paper-2);
+  border: 1px solid var(--lf-rule);
+  padding: 36px 40px 28px;
+  margin-bottom: 48px;
+  position: relative;
+}
+.lf-manuscript::before, .lf-manuscript::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--lf-vermillion);
+  opacity: 0.7;
+}
+.lf-manuscript::before { top: 8px; left: 8px; }
+.lf-manuscript::after { bottom: 8px; right: 8px; }
+
+.lf-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+.lf-cell {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--lf-vermillion);
+  background: var(--lf-paper);
+  cursor: pointer;
+  font-family: var(--lf-serif);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, box-shadow 0.15s;
+  /* 米字格 — full mizige guides */
+  background-image:
+    /* horizontal */
+    linear-gradient(to bottom, transparent calc(50% - 0.5px), rgba(139, 26, 26, 0.35) calc(50% - 0.5px), rgba(139, 26, 26, 0.35) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    /* vertical */
+    linear-gradient(to right, transparent calc(50% - 0.5px), rgba(139, 26, 26, 0.35) calc(50% - 0.5px), rgba(139, 26, 26, 0.35) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    /* diag \ */
+    linear-gradient(135deg, transparent calc(50% - 0.4px), rgba(139, 26, 26, 0.22) calc(50% - 0.4px), rgba(139, 26, 26, 0.22) calc(50% + 0.4px), transparent calc(50% + 0.4px)),
+    /* diag / */
+    linear-gradient(45deg, transparent calc(50% - 0.4px), rgba(139, 26, 26, 0.22) calc(50% - 0.4px), rgba(139, 26, 26, 0.22) calc(50% + 0.4px), transparent calc(50% + 0.4px));
+}
+.lf-cell:hover { box-shadow: inset 0 0 0 2px rgba(139, 26, 26, 0.25); }
+.lf-cell.is-focus {
+  box-shadow: inset 0 0 0 2px var(--lf-vermillion);
+  background-color: var(--lf-paper);
+}
+.lf-cell.is-filled {
+  background-image: none;
+  background-color: var(--lf-paper);
+  border-color: var(--lf-ink);
+}
+.lf-cell-char {
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--lf-ink);
+}
+.lf-grid-break {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: var(--lf-serif);
+  font-size: 24px;
+  color: var(--lf-vermillion);
+  padding: 6px 0;
+  letter-spacing: 0.5em;
+}
+.lf-grid-break span { opacity: 0.6; }
+
+.lf-manuscript-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-family: var(--lf-display);
+  font-size: 13px;
+}
+.lf-quiet {
+  background: none;
+  border: none;
+  color: var(--lf-ink-2);
+  cursor: pointer;
+  font-family: var(--lf-display);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  padding: 0;
+  font-style: italic;
+  transition: color 0.15s;
+}
+.lf-quiet:hover { color: var(--lf-vermillion); }
+.lf-quiet-sep { color: var(--lf-rule); }
+
+/* ===== Filters ===================================================== */
+.lf-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+.lf-filter {
+  border-top: 2px solid;
+  padding: 18px 0 16px;
+}
+.lf-filter-ochre { border-top-color: var(--lf-ochre); }
+.lf-filter-sage  { border-top-color: var(--lf-sage); }
+.lf-filter-label {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.lf-filter-zh {
+  font-family: var(--lf-serif);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--lf-ink);
+  letter-spacing: 0.12em;
+}
+.lf-filter-en {
+  font-family: var(--lf-display);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lf-ink-3);
+  font-style: italic;
+}
+.lf-filter-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--lf-rule);
+  padding: 6px 0 8px;
+  font-family: var(--lf-serif);
+  font-size: 16px;
+  color: var(--lf-ink);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.lf-filter-input:focus { border-bottom-color: var(--lf-ink); }
+.lf-filter-input::placeholder {
+  color: var(--lf-ink-3);
+  font-family: var(--lf-display);
+  font-style: italic;
+  font-size: 13.5px;
+}
+.lf-filter-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.lf-filter-chip {
+  font-family: var(--lf-serif);
+  font-size: 16px;
+  padding: 3px 10px 5px;
+  background: var(--lf-paper-2);
+  border: 1px solid var(--lf-rule);
+}
+.lf-filter-ochre .lf-filter-chip { color: var(--lf-ochre); }
+.lf-filter-sage .lf-filter-chip { color: var(--lf-sage); }
+
+/* ===== Results ===================================================== */
+.lf-results { margin-bottom: 64px; }
+
+.lf-blank {
+  padding: 80px 24px;
+  text-align: center;
+}
+.lf-blank-orn {
+  font-family: var(--lf-display);
+  font-size: 36px;
+  color: var(--lf-vermillion);
+  margin-bottom: 18px;
+}
+.lf-blank-text {
+  font-family: var(--lf-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--lf-ink-3);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+.lf-blank-link {
+  background: none;
+  border: none;
+  color: var(--lf-vermillion);
+  font: inherit;
+  font-style: italic;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(139, 26, 26, 0.4);
+}
+.lf-blank-link:hover { text-decoration-color: var(--lf-vermillion); }
+
+/* Couplet hover */
+.lf-couplet { transition: background 0.18s; }
+.lf-couplet:hover { background: rgba(139, 26, 26, 0.025); }
+.lf-couplet:hover .lf-couplet-num { font-weight: 600; }
+
+.lf-couplet-list {
+  display: flex;
+  flex-direction: column;
+}
+.lf-couplet {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 24px;
+  padding: 22px 0 22px;
+  border-bottom: 1px solid var(--lf-rule);
+}
+.lf-couplet:first-child { border-top: 1px solid var(--lf-rule); }
+.lf-couplet-marker {
+  text-align: right;
+  padding-top: 4px;
+}
+.lf-couplet-num {
+  font-family: var(--lf-display);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--lf-vermillion);
+  font-variant-numeric: oldstyle-nums;
+  line-height: 1;
+}
+.lf-couplet-type {
+  font-family: var(--lf-serif);
+  font-size: 11px;
+  color: var(--lf-ink-3);
+  letter-spacing: 0.16em;
+  margin-top: 8px;
+}
+.lf-couplet-text {
+  font-family: var(--lf-serif);
+  font-size: 30px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+  color: var(--lf-ink);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.lf-couplet-comma, .lf-couplet-period {
+  color: var(--lf-vermillion);
+  margin: 0 4px;
+  opacity: 0.7;
+}
+.lf-couplet-attr {
+  display: flex;
+  gap: 10px;
+  font-family: var(--lf-display);
+  font-size: 13px;
+  color: var(--lf-ink-2);
+  align-items: baseline;
+}
+.lf-attr-author {
+  color: var(--lf-ink);
+  font-weight: 500;
+  font-family: var(--lf-serif);
+  font-size: 15px;
+}
+.lf-attr-bar { color: var(--lf-rule); }
+.lf-attr-title { font-style: italic; }
+
+.lf-mark {
+  background: var(--lf-vermillion-soft);
+  color: var(--lf-vermillion);
+  padding: 0 1px;
+  font-weight: 700;
+}
+
+/* ===== End / colophon ============================================== */
+.lf-end {
+  text-align: center;
+  padding: 32px 0 0;
+  border-top: 1px solid var(--lf-ink);
+  margin-top: 16px;
+}
+.lf-end-orn {
+  font-family: var(--lf-display);
+  font-size: 28px;
+  color: var(--lf-vermillion);
+  margin-bottom: 12px;
+}
+.lf-end-text {
+  font-family: var(--lf-display);
+  font-style: italic;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--lf-ink-3);
+  text-transform: lowercase;
+}
+
+/* ===== Mobile / narrow viewport ==================================== */
+/* The folio aesthetic was designed at 1080–1240px. Below ~720px we
+   strip the manuscript margins, stack the hero, and shrink the
+   manuscript grid so 七言's 14 cells fit on a phone. */
+@media (max-width: 720px) {
+  .lf-root {
+    padding: 28px 18px 40px;
+    line-height: 1.45;
+  }
+  .lf-page-rule,
+  .lf-folio-no { display: none; }
+
+  /* Hero — stack title above seal+meta */
+  .lf-hero { margin-bottom: 36px; }
+  .lf-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-bottom: 16px;
+  }
+  .lf-kicker {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+    margin-bottom: 12px;
+    gap: 10px;
+  }
+  .lf-display {
+    font-size: clamp(72px, 22vw, 120px);
+    margin-bottom: 14px;
+    gap: 2px;
+  }
+  .lf-tagline { font-size: 14px; max-width: none; }
+  .lf-hero-right {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+  }
+  .lf-seal { width: 76px; height: 76px; }
+  .lf-hero-meta { text-align: left; font-size: 14px; }
+
+  /* Stats — 2x2 instead of 1x4 */
+  .lf-ribbon {
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 36px;
+  }
+  .lf-ribbon-stat { padding: 14px 14px; }
+  .lf-ribbon-value { font-size: 26px; margin-bottom: 4px; }
+  .lf-ribbon-label { font-size: 10px; letter-spacing: 0.14em; }
+
+  /* Section heads — wrap so the meta drops to a new line */
+  .lf-compose-head {
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-bottom: 22px;
+    padding-bottom: 10px;
+  }
+  .lf-compose-eyebrow { font-size: 18px; }
+  .lf-h2 { font-size: 22px; white-space: normal; }
+  .lf-compose-zh { font-size: 14px; letter-spacing: 0.14em; }
+  .lf-results-meta {
+    margin-left: 0;
+    width: 100%;
+    text-align: left;
+    font-size: 12px;
+  }
+
+  /* Compose section */
+  .lf-compose { margin-bottom: 36px; }
+  .lf-tabs { gap: 18px; margin-bottom: 22px; }
+  .lf-tab { font-size: 14px; letter-spacing: 0.06em; }
+
+  /* Manuscript — shrink cells so 14 of them fit at 375px */
+  .lf-manuscript {
+    padding: 20px 14px 16px;
+    margin-bottom: 32px;
+  }
+  .lf-grid { gap: 4px; margin-bottom: 16px; }
+  .lf-cell { width: 36px; height: 36px; }
+  .lf-cell-char { font-size: 22px; }
+  .lf-grid-break {
+    font-size: 18px;
+    padding: 2px 0;
+    letter-spacing: 0.3em;
+  }
+  .lf-manuscript-actions { gap: 10px 12px; font-size: 12px; }
+
+  /* Filters — single column */
+  .lf-filters { grid-template-columns: 1fr; gap: 18px; }
+  .lf-filter { padding: 14px 0 12px; }
+  .lf-filter-zh { font-size: 16px; }
+  .lf-filter-en { font-size: 10px; }
+
+  /* Results */
+  .lf-results { margin-bottom: 40px; }
+  .lf-blank { padding: 48px 12px; }
+  .lf-blank-orn { font-size: 28px; margin-bottom: 12px; }
+  .lf-blank-text { font-size: 14px; line-height: 1.6; }
+  .lf-couplet {
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    padding: 16px 0;
+  }
+  .lf-couplet-num { font-size: 18px; }
+  .lf-couplet-type { font-size: 10px; margin-top: 6px; letter-spacing: 0.12em; }
+  .lf-couplet-text {
+    font-size: 20px;
+    letter-spacing: 0.04em;
+    line-height: 1.55;
+    margin-bottom: 6px;
+  }
+  .lf-couplet-attr {
+    flex-wrap: wrap;
+    font-size: 12px;
+    gap: 6px;
+  }
+  .lf-attr-author { font-size: 13px; }
+
+  /* Colophon */
+  .lf-end { padding-top: 24px; }
+  .lf-end-orn { font-size: 22px; }
+  .lf-end-text { font-size: 11px; letter-spacing: 0.1em; }
+}
+
+/* Extra-narrow phones — drop the cells one more notch so 14 fit at 360px. */
+@media (max-width: 380px) {
+  .lf-root { padding: 24px 14px 32px; }
+  .lf-cell { width: 32px; height: 32px; }
+  .lf-cell-char { font-size: 18px; }
+  .lf-ribbon-value { font-size: 22px; }
+  .lf-couplet-text { font-size: 18px; }
+}
